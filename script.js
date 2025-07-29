@@ -23,7 +23,8 @@ form.addEventListener("submit", (e) => {
   const transaction = {
     id: Date.now(),
     text,
-    amount
+    amount,
+    date: new Date().toLocaleDateString()
   };
 
   transactions.push(transaction);
@@ -44,8 +45,9 @@ function renderTransactions() {
     li.classList.add(itemClass);
     li.innerHTML = `
       ${item.text} <span>${sign}$${Math.abs(item.amount).toFixed(2)}</span>
-      <button class="delete-btn" onclick="deleteTransaction(${item.id})">x</button>
-    `;
+  <small>${item.date}</small>
+  <button class="delete-btn" onclick="deleteTransaction(${item.id})">x</button>
+`;
     transactionList.appendChild(li);
   });
 
