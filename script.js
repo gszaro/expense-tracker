@@ -15,7 +15,10 @@ form.addEventListener("submit", (e) => {
   const text = textInput.value.trim();
   const amount = +amountInput.value;
 
-  if (!text || isNaN(amount)) return;
+  if (!text || isNaN(amount) || amount === 0) {
+  alert("Please enter a valid description and a non-zero amount.");
+  return;
+}
 
   const transaction = {
     id: Date.now(),
